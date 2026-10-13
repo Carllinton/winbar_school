@@ -1,0 +1,548 @@
+body{
+background-image:url('dommc.jpg');
+background-repeat: no-repeat;
+background-size: 1500px 1000px;
+background-position: center;
+
+}
+.wrapall {
+	width: 960px;
+	height: auto;
+	margin: 0 auto; 
+	overflow: hidden; 
+	background:#FFF;
+	box-shadow: 10px 10px 5px #888888;
+	min-height:280px;
+}
+.stbox
+{
+  background-image:url(search.JPG); 
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:15px;
+}
+.header{
+	width: 960px;
+	height: 180px;
+	margin: 0 auto; 
+	overflow: hidden; 
+	background:url(banner.png) no-repeat;
+	border: 1px #000000 solid;	
+}
+
+.nav{
+	width: 960px;
+	margin: 0 auto; 
+	overflow: hidden; 
+}
+
+
+.input_label { 
+-moz-border-radius: 5px 0 0 5px; 
+-webkit-border-radius: 5px 0 0 5px; 
+background: #EEE; 
+border: 1px solid #CCC; 
+border-radius: 5px 0 0 5px; 
+border-right: 1px solid #FFF; 
+display: inline-block; 
+height: 36px; 
+width: 275px; 
+line-height: 36px; 
+margin-right: 0; 
+width: 80px!important; 
+} 
+#contact input[type=text] {
+	-moz-border-radius: 0 5px 5px 0;
+	-webkit-border-radius: 0 5px 5px 0;
+	background: #FFF;
+	border: 1px solid #CCC;
+	border-radius: 0 5px 5px 0;
+	color: #FFF;
+	font: 13px/1.6 'Helvetica Neue' , Arial, 'Liberation Sans' , FreeSans, sans-serif;
+	height: 38px;
+	line-height: 24px;
+	margin: 0px 8px 0px -5px;
+	outline: none;
+	padding: 0 3px;
+	width: 150px;
+} 
+
+
+
+
+.sidebar{
+
+		margin-top: 10px;
+		margin-left: -20px;
+		width: 264px;
+		height: 200px;
+		font-size: 14px;
+		color: #669900;
+		min-height: 385px;
+}
+
+.content{
+	
+	width: 180px;
+	padding-bottom: 10px;
+	width: 650px;
+	height: 100%;
+	background: transfarent;
+	border: 3px #669900 solid;
+	margin-top:-390px;
+	margin-left:200px;
+	color: #669900;
+
+	overflow: hidden;
+}
+.loginForm{
+	margin-top: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	position: aboslute;
+	width: 560px;
+	height: 230px;
+	padding: 10px ;
+	background: #FFFFFF url(login.jpg) no-repeat center right;
+	border: 1px #666666 dotted;
+	font-size: 14px;
+	color: #669900;
+	opacity: 0.6;
+	
+}
+select.day{
+	color:#000000;   
+	font:'trebuchet ms',helvetica,sans-serif; 
+	font-size: 9px;
+}
+input.text
+{   
+	color:#000000;   
+	font:'trebuchet ms',helvetica,sans-serif; 
+	font-size: 12px;
+}
+input.text2
+{   
+	color:#000000;   
+	font-size: 10px;
+}
+input.btn
+{   
+	width: 200px;
+	color:#000000;   
+	font: bold small 'trebuchet ms',helvetica,sans-serif; 
+}
+input.btn2{
+	color: #000000;
+	font: bold small 'trebuchet ms',helvetica,sans-serif; 
+	position: fixed;
+	right: 240px;
+	bottom: 90px;
+}
+input.btn3{
+	color: #000000;
+	font: bold small 'trebuchet ms',helvetica,sans-serif; 
+	position: fixed;
+	right: 190px;
+	bottom: 80px;
+}
+input.btn4{
+	color: #000000;
+	font: bold small 'trebuchet ms',helvetica,sans-serif; 
+	position: fixed;
+	right: 300px;
+	bottom: 80px;
+}
+input.btn5{
+	color: #000000;
+	font: bold small 'trebuchet ms',helvetica,sans-serif; 
+	position: fixed;
+	right: 250px;
+	bottom: 80px;
+}
+
+#cmd_wrapper {
+  width : 640px;
+  margin : 0 auto 0;
+}
+#cmd_sidebar h2 {
+  color : #669900;
+  margin : 5px 0 0 5px;
+}
+#cmd_sidebar {
+  width : 160px;
+  float : left;
+  margin-top: -370px; 
+  margin-left: -150px;
+  display : inline;
+ }
+ ul#cmd {
+  margin : 5px;
+  list-style-type : none;
+  font-size : 90%;
+}
+ul#cmd li {
+  margin-bottom : 5px;
+}
+ul#cmd a {
+  position : relative; 
+  width : 145px;
+  height : 4em;
+  display : block;
+  padding : 5px;
+  padding-right : 0;
+  border : 1px solid #669900;
+  background : #ddd url(button.jpg) repeat-x;
+  color : #669900; 
+  text-decoration : none;
+  font-weight : bold;
+  cursor : pointer;
+}
+ul#cmd a span {
+  position : absolute;
+  top : -9000px;
+  left : -9000px;
+  display : block;
+  width : 260%;
+  height : 4em; 
+  background : #fafafa url(images/cmd_linkback_on.jpg) repeat-x;
+  border : 1px solid #669900;
+  border-left : 0;
+  padding : 5px;
+  padding-left : 23px;
+  text-indent : -17px;
+  cursor : pointer;
+  color : #cc9900;
+}
+ul#cmd a:hover, ul#cmd a:focus, ul#cmd a:active {
+  background : #fafafa url(images/cmd_linkback_on.jpg) repeat-x;
+  color : #000;
+}
+ul#cmd a:hover span, ul#cmd a:focus span, ul#cmd a:active span {
+  top : -1px;
+  left : 80px;
+  width:80px;
+}
+div#calendar {
+  background: #FFFFFF;
+  margin : 0 auto;
+  margin-top: 10px;
+  padding : 20px;
+  text-align : center;
+  width : 40em;
+  height: 25em;
+  border : 5px solid #000000;
+}
+
+/* calendar heading color */
+h2.calendar {
+  color : #000000;
+  font-weight : normal;
+}
+
+/* list info - monospace font must be used */
+ul#days, ul.weeks {
+  font-family : 'courier new', monospace;
+  list-style-type : none;
+  margin : 20px 0 20px 0;
+}
+
+/* day-box span styles - adjust with padding */ 
+ul#days li span {
+  background-color : #669900;
+  border : 1px solid #000;
+  font-weight : bold;
+  color : #fff;
+  padding : 6px;
+}
+
+/* active links boxes default state - adjust with padding */
+ul.weeks li a.al, ul.weeks li a.na  { 
+  color : #9999;
+  text-decoration : none;
+  background-color : #ffffcc;
+  border : 1px solid #999;
+  font-weight : bold;
+  padding : 10px;
+}
+
+/* all states of not-used links */
+ul.weeks li a.na, ul.weeks li a.na:hover, ul.weeks li a.na:focus, ul.weeks li a.na:active   { 
+  background : transparent;
+  color : #666;
+  cursor : default;
+}
+
+/* hover and focus state of active links */
+ul.weeks li a.al:hover, ul.weeks li a.al:focus, ul.weeks li a.al:active {
+  color : #000;
+  background-color : #eecc11;
+  border : 1px solid #000;
+  text-decoration : none;
+  cursor : pointer;
+}
+
+/* not used link boxes - color and background should match - adjust with padding */
+ul.weeks li a.nu { 
+  color : #eee;
+  padding : 10px;
+  border : 1px solid #ccc;
+  background-color : #eee;
+  cursor : default;
+}
+
+/* to hide link separators */
+span.sep {
+  display : none;
+}
+
+/* this needs to be in conditional comment for IE only */
+div#calendar {
+  font-size : 0.9em;
+  letter-spacing : 0.001em;
+}
+
+h1#cst a {
+  color : #fff;
+  display : block;
+  width : 975px;
+  height : 150px;
+  padding : 10px; 
+  text-decoration : none;
+  font-size : 90%;
+  font-weight : normal;
+  margin : auto;
+  margin-top: -20px;
+}
+
+/* this supplies hover and focus h1 a text color */
+h1#cst a:hover, h1#cst a:focus, h1#cst a:active {
+  color : #ffffaa;
+}
+
+/* something extra for keyboard focus to help even more */
+h1#cst a:focus, h1#cst a:active {
+  text-decoration : underline;
+}
+
+/* 
+  this centers the unordered list. the whole page has margin and padding set to zero
+  else that would have to be added to the h1 a and to the list to bring them together
+*/
+ul.cst {
+  margin-left: -42px;
+  margin-top: 0px;
+
+}
+ul.cst2 {
+  margin-top: -16px;	
+  margin-left: 0px;
+}
+
+/* make the list horizontal (Note float:right reverses order) */
+ul.cst li {
+  display : inline;
+  float : left;
+}
+ul.cst2 li {
+  display : inline;
+  float : right;
+}
+
+/* this style the links themselves and the on-page tab as well */
+ul.cst li a, ul.cst li.on, ul.cst2 li a, ul.cst2 li.on {
+  display : block;
+  width : auto;
+  height : auto;
+  color : #666;
+  text-decoration : none;
+  padding : 5px 18px 5px 18px;
+  white-space : nowrap; /* keeps the tabs from breaking */
+  text-align : center;
+  border : 1px solid #999;
+  border-top : 0;
+  background : #ffffdd url(images/cst_shadow.jpg) repeat-x top left;
+  cursor : pointer; /* an opera fix */
+  margin : 0 2px 0 2px;
+} 
+
+/* restyles parts of the on-page tab from above */
+ul.cst li.on, ul.cst2 li.on {
+  color : #fff;
+  background-color : #669900;
+  background-image : none;
+  cursor : default; /* corrects opera fix */
+  border : 1px solid #000;
+  border-top : 1px solid #669900; /* part of broader covering */
+} 
+
+/* this supplies hover and focus styles for the anchors */
+ul.cst li a:hover, ul.cst li a:focus, ul.cst li a:active, ul.cst2 li a:hover, ul.cst2 li a:focus, ul.cst2 li a:active {
+  color : #000;
+  background : #e5cb7d url(cover.jpg) repeat-x top left;
+}
+
+/* 
+  something extra for keyboard focus. Another image and third background
+  image/color could be applied here as well.
+*/
+ul.cst li a:focus, ul.cst li a:active, ul.cst2 li a:focus, ul.cst2 li a:active {
+  text-decoration : underline;
+}
+#userPic {
+  color : #FFFFFF;
+  display : block;
+  width : 135px;
+  height : 140px;
+  padding : 10px; 
+  background : #FFFFFF url('userNurse.jpg') no-repeat center center;
+  background-attachment: scroll;
+  border : 1px solid #000; 
+  text-decoration : none;
+  font-size : 90%;
+  font-weight : normal;
+  position: fixed;
+  margin-top: -15px;
+}
+#chiefPic{
+  color : #FFFFFF;
+  display : block;
+  width : 135px;
+  height : 140px;
+  padding : 10px; 
+  background : #FFFFFF url('chiefNurse.jpg');
+  background-attachment: scroll;
+  border : 1px solid #000;
+  text-decoration : none;
+  font-size : 90%;
+  font-weight : normal;
+  position: fixed;
+  margin-top: -15px;
+}
+#box{
+  color : #FFFFFF;
+  display : block;
+  width : 450px;
+  height : 140px;
+  padding : 10px; 
+  background : #FFFFFF;
+  border : 1px solid #000;
+  text-decoration : none;
+  font-size : 90%;
+  font-weight : normal;
+  position: fixed;
+  margin-top: -15px;
+  right: 180px;
+}
+#box p{
+  position: fixed;
+  margin-top: 5px;
+  color : #000000;
+  font-size: 130%;
+  font-weight : normal;
+}
+.tableMiddle{
+		padding: 10px;
+		width: 450px;
+		position: fixed;
+		margin-top: 50px;
+		right: 250px;
+		border: 3px #669900 solid;
+		font-size: 10px;
+		color: #333333;
+		min-height: 100px;
+}
+.tableChiefNoti{
+		padding: 10px;
+		width: 630px;
+		position: fixed;
+		margin-top: 50px;
+		right: 160px;
+		border: 3px #669900 solid;
+		font-size: 10px;
+		color: #333333;
+		min-height: 100px;
+}
+.tableScheduling{
+		padding: 10px;
+		width: 600px;
+		margin-top: -20px;
+		right: 250px;
+		border: 3px #669900 solid;
+		font-size: 10px;
+		color: #333333;
+		min-height: 150px;
+}
+.tableTrade{
+		padding: 10px;
+		width: 460px;
+		position: fixed;
+		margin-top: 50px;
+		right: 240px;
+		border: 3px #669900 solid;
+		font-size: 10px;
+		color: #333333;
+		min-height: 100px;
+}
+.tableAll{
+		padding: 10px;
+		width: 460px;
+		position: fixed;
+		margin-top: -10px;
+		right: 240px;
+		background: #FFFFFF url(all.jpg);
+		border: 3px #669900 solid;
+		font-size: 10px;
+		color: #333333;
+		min-height: 380px;
+}
+.tableSignUp{
+		padding: 10px;
+		width: 460px;
+		position: fixed;
+		margin-top: -10px;
+		right: 240px;
+		background: #FFFFFF url(add.jpg);
+		border: 3px #669900 solid;
+		font-size: 10px;
+		color: #333333;
+		min-height: 380px;
+}
+table.gradienttable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.gradienttable th {
+	padding: 0px;
+	background: #d5e3e4;
+	background: -ms-linear-gradient(top,  #d5e3e4 0%,#ccdee0 40%,#b3c8cc 100%);
+	background: linear-gradient(to bottom,  #d5e3e4 0%,#ccdee0 40%,#b3c8cc 100%);
+	border: 1px solid #999999;
+}
+table.gradienttable td {
+	padding: 0px;
+	background: #ebecda;
+	border: 1px solid #999999;
+}
+table.gradienttable th p{
+	margin:0px;
+	padding:8px;
+	border-top: 1px solid #eefafc;
+	border-bottom:0px;
+	border-left: 1px solid #eefafc;
+	border-right:0px;
+}
+table.gradienttable td p{
+	margin:0px;
+	padding:8px;
+	border-top: 1px solid #fcfdec;
+	border-bottom:0px;
+	border-left: 1px solid #fcfdec;;
+	border-right:0px;
+}
+
+	

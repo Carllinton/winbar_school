@@ -63,7 +63,7 @@
 <title>John Paul College</title>
 
 
-<link href = "style.css" rel = "stylesheet" type = "text/css"/>
+<link href="../style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 
@@ -131,7 +131,7 @@ include('includes/menu1.php');
 																																				</select></td>
 						</tr>
 						<tr>
-							<td>Middle Initial:</td><td align='left'><input type='text' style='width:20px;' maxlength='5' id="name" name='minitial' /></td>
+							<td>Middle Initial:</td><td align='left'><input type='text' class='middle-initial' maxlength='5' id="name" name='minitial' /></td>
 							<td>Guardian's Name:</td><td align='left'><input type='text'  maxlength='50' id="name" name='guardianname' /></td>
 						</tr>
 						<tr>

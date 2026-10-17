@@ -11,10 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>John Paul College</title>
 
-<link rel="stylesheet" type="text/css" media="all" href="niceforms-default.css" />
-	
-
-<link href = "style.css" rel = "stylesheet" type = "text/css"/>
+<link href="../style.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
 $('.confirm').live('click', function(){
     return confirm("Are you sure?");
@@ -26,11 +23,6 @@ $('.confirm').live('click', function(){
 	<script src="js/jquery.dataTables.js" type="text/javascript"></script>
     <script src="js/jquery.easing.1.3.js"></script>
 
-  <style type="text/css">
-			@import "css/demo_table_jui.css";
-            @import "css/jquery-ui-1.8.4.custom.css";
-    </style>
-        
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function(){
                 $('#datatables').dataTable({
@@ -63,8 +55,8 @@ include('includes/menu1.php');
 
 <div id="main">
 	<div class="shell">
-	<div style='float:left; margin-left: 350px;'><center><b><h1>Subjects List</h1></b></center></div>
-	<div style='float:right; margin-right:25px; margin-bottom:20px;'><a href='addnewsubj.php'><img src='iconadd2.png' width='50' ></a></div>
+	<div class="subjects-heading"><center><b><h1>Subjects List</h1></b></center></div>
+	<div class="subjects-actions"><a href='addnewsubj.php'><img src='iconadd2.png' width='50' ></a></div>
 		<form method="post" class="niceform" >
 
 		

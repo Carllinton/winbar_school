@@ -55,10 +55,10 @@ if(isset($_POST['submit']))
 	<h1>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSystem Login</h1>
 	
 <form method="POST">	
-<div style="float:left; margin-top: -40px; margin-left: 40px;">
+<div class="login-logo">
 <img src="logo.jpg" width="160px" width="110px">
 </div>
-<div style="margin-left: auto; margin-right: auto;">
+<div class="login-content">
 	
 	</br>
 	<b>Username:</b>

@@ -13,9 +13,9 @@ document.write('<form><input type=button name=print value="Print" onClick="windo
 	
 	<body>
 		
-		<div align='center'><img width='200' height='150' src='logo.jpg'></div><div align='center' style='margin-top:20px;'>DE OCAMPO MEMORIAL MEDICAL CENTER<br>2921 Nagtahan St. Sta. Mesa Manila</div></div><br>
+		<div align='center'><img width='200' height='150' src='logo.jpg'></div><div align='center' class="report-school">DE OCAMPO MEMORIAL MEDICAL CENTER<br>2921 Nagtahan St. Sta. Mesa Manila</div></div><br>
 		<div align='center'>Student Listing:</div><br>
-		<div align='center' width='600px' style='margin-top:30px;'>
+		<div align='center' width='600px' class="report-table-wrap">
 		<table border="2" align='center' width='1000'>
 		<tr>
 				<td width="100" align="center"><b>Student Num</b></td>
@@ -55,7 +55,7 @@ document.write('<form><input type=button name=print value="Print" onClick="windo
 			</tbody>
 			</table>
 		</div>
-		<div align='center' style='margin-top:500px;' >
+		<div align='center' class="report-print">
 		<form>
 			<input type='button' onclick='window.print()'>
 		</form>

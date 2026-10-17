@@ -49,7 +49,7 @@
 <title>John Paul College</title>
 
 
-<link href = "style.css" rel = "stylesheet" type = "text/css"/>
+<link href="../style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 

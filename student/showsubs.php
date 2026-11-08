@@ -13,85 +13,87 @@ if(isset($_POST['reg']))
 			$units=$_POST['units'];
 			
 				$insertenroll=$conn->query("INSERT INTO student_subject VALUES('','$stid','$values','$units','0')");
-				echo"<script>window.alert('Enrollment form was successfully sent to the system')</script>";
+				echo"<script>try{sessionStorage.setItem('winbarFlash','success|Enrollment form sent to the registrar.')}catch(e){alert('Enrollment form sent to the registrar.')}window.winbarLeaving=1;</script>";
 				echo"<script>window.location='studentindex.php'</script>";
 			
 			
 		}	
 		
 ?>
-<html>
-	<head>
-	<script type="text/javascript">
-$('.confirm').live('click', function(){
-    return confirm("Are you sure?");
-});
-</script>
-	<SCRIPT LANGUAGE="JavaScript"> 
-if (window.print) {
-document.write('<form><input type=button name=print value="Print" onClick="window.print()"></form>');
-}
-</script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Enrollment Form</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Enrollment form | Win B. A. R. Academy</title>
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+<link href="../style.css" rel="stylesheet" type="text/css" />
+<script src="../assets/js/portal.js" defer></script>
+</head>
+<body class="doc-page role-student">
 
-	<link href="../style.css" rel="stylesheet" type="text/css"/>
-	<script src="jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
-	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.core.js"></script>
-	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.widget.js"></script>
-	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.datepicker.js"></script>
+<div class="doc">
+	<div class="doc__toolbar no-print">
+		<a class="btn btn--ghost" href="enroll.php">Change subjects</a>
+		<button type="button" class="btn" onclick="window.print()">Print form</button>
+	</div>
 
-	
-	</head>
-	
-	<body>
-		
-		<div align='center'><img width='130' height='100' src='../logo.jpg'></div><div align='center' class="enrollment-school">John Paul College<br>MG ANDAYA COMPOUND<br>Odiong, Roxas, Oriental Mindoro, Philippines</div></div><br>
-		<div align='center' class="enrollment-title"> UNOFFICIAL ENROLLMENT FORM
+	<article class="window doc__sheet">
+		<header class="doc__head">
+			<img src="../assets/img/logo.svg" alt="Win B. A. R. Academy crest" />
+			<div>
+				<div class="doc__school">Win B. A. R. Academy</div>
+				<div class="doc__address">88 Archive Road, Metro Manila, Philippines</div>
+			</div>
+			<div class="doc__title">
+				<strong>Unofficial enrollment form</strong>
+				<span><?php echo "$_POST[sem]"; ?>, A.Y. 2026&ndash;2027</span>
+			</div>
+		</header>
+
+		<div class="doc__body">
+		<div class="doc__meta">
+			<?php echo  "<span><b>Student</b>$rows[fname] $rows[minitial] $rows[lname]</span> <span><b>Course</b><span class='caps'>$rows[course]</span></span> <span><b>Year and section</b>$rows[yearlvl]</span>" ;?>
 		</div>
-		<div align='center' class="enrollment-term"> <?php echo "$_POST[sem]"; ?> School Year 2015 - 2016
-		</div>
-		<div align='center' width='600px' class="enrollment-student"><?php echo  "<b>Student Name: </b>$rows[fname] $rows[minitial] $rows[lname]|| <b>Course: </b>$rows[course]|| <b>Year Level: </b>$rows[yearlvl]" ;?>
-		
-		<table border="2" align='center' width='800'>
-		<tr>
-				<td align='left' colspan='3'><b>ENTRANCE FEE</b> </td><td colspan='3' align='right'>2,050.00</td>
-		</tr>
-		<tr>
-				<td width="300" align="center"><b>Tuition</b></td>
-				<td width="200" align="center"><b>Number of Units</b></td>
-				<td width="200" align="center"><b>Per Unit</b></td>
-				<td width="200" align="center"><b>Tutorial</b></td>
-				<td width="200" align="center"><b>Lab</b></td>
-				<td width="200" align="center"><b>Room</b></td>
-				<td width="200" align="center"><b>Day</b></td>
-				<td width="200" align="center"><b>Time</b></td>
-				<td width="200" align="center"><b>Instructor</b></td>
-				<td width="200" align="center"><b>Total</b></td>
 
-			
-          </tr>
-              <tbody>
+		<p class="scroll-hint no-print">Swipe the table sideways to see every column.</p>
+		<div class="table-scroll">
+		<table class="data-table">
+			<thead>
+				<tr>
+					<th>Subject</th>
+					<th class="num">Units</th>
+					<th class="num">Per unit</th>
+					<th class="num">Tutorial</th>
+					<th class="num">Lab</th>
+					<th>Room</th>
+					<th>Day</th>
+					<th>Time</th>
+					<th>Instructor</th>
+					<th class="right">Total</th>
+				</tr>
+			</thead>
+			<tbody>
 			  <?php
-				
+
 				$alltext="";
 				$totalunits=0;
 				$totperlab=0;
 				foreach($_POST['subject'] as $item){
-			
+
 				$getcodes=$conn->query("SELECT * FROM subjecttbl WHERE subjectcode='$item'");
-			
+
 				$alltext=$alltext.",".$item;
 
 				$subrow=mysqli_fetch_array($getcodes);
-				
+
 					echo"<tr>";
-						echo"<td align='center'>$subrow[subjectcode]</td>";
-						echo"<td align='center'>$subrow[numofunits]</td>";
-						echo"<td align='center'>296</td>";
+						echo"<td class='mono'>$subrow[subjectcode]</td>";
+						echo"<td class='num'>$subrow[numofunits]</td>";
+						echo"<td class='num'>296</td>";
 						if($subrow['islab']==1)
 						{
-							
+
 							$lab=1500;
 							$lab2="1500";
 							$totperlab=$totperlab+1500;
@@ -112,46 +114,54 @@ document.write('<form><input type=button name=print value="Print" onClick="windo
 							$tut=0;
 							$tut2="";
 						}
-							echo"<td align='center'>$tut2</td>";
-							echo"<td align='center'>$lab2</td>";
-							echo"<td align='center'>$subrow[room]</td>";
-							echo"<td align='center'>$subrow[day]</td>";
-							echo"<td align='center'>$subrow[time]</td>";
-							echo"<td align='center'>$subrow[instructor]</td>";
+							echo"<td class='num'>$tut2</td>";
+							echo"<td class='num'>$lab2</td>";
+							echo"<td>$subrow[room]</td>";
+							echo"<td>$subrow[day]</td>";
+							echo"<td>$subrow[time]</td>";
+							echo"<td>$subrow[instructor]</td>";
 						$totrow=$subrow['numofunits'] * 296;
-						echo"<td align='right'>$totrow.00</td>";
+						echo"<td class='right mono'>$totrow.00</td>";
 						$totalunits=$totalunits + $subrow['numofunits'];
 					echo"</tr>";
-					
-				
+
+
 				}
-				$value=($totalunits * 296) + 2050 +150+50+$totperlab;				
+				$value=($totalunits * 296) + 2050 +150+50+$totperlab;
 				echo"
 						<tr>
-							<td colspan='6'></td>
+							<td colspan='9'><b>Entrance fee</b></td><td class='right mono'>2,050.00</td>
 						</tr>
 						<tr>
-							<td align='left' colspan='5'><b>INTERNET</b></td><td align='right'>150.00</td>
+							<td colspan='9'><b>Internet</b></td><td class='right mono'>150.00</td>
 						</tr>
 						<tr>
-							<td align='left' colspan='5'><b>MISC</b></td><td align='right'>50.00</td>
+							<td colspan='9'><b>Miscellaneous</b></td><td class='right mono'>50.00</td>
 						</tr>
-					<tr>
-						<td align='left'><b>Total units</td><td colspan='4' align='left'> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>$totalunits</b></td><td align='right' bgcolor='#00EE00'><b>P&nbsp&nbsp&nbsp&nbsp$value.00</b></td>
+					<tr class='total-row'>
+						<td colspan='9'>Total for $totalunits units</td><td class='right grand'>&#8369; $value.00</td>
 					</tr>";
 			  ?>
 			</tbody>
-	</table>
-			<form method="POST" > 
-			<div class="enrollment-submit"><input type='submit' name='reg' value='Submit Enrollment Form' onClick="return confirm('Are you sure?, Form will be submitted to the system');"></div>
+		</table>
 		</div>
-		<div align='center' class="enrollment-print">
-		
-			<input type='hidden' name='contents' value="<?php echo $alltext; ?>">
-			<input type='hidden' name='units' value="<?php echo $totalunits; ?>">
-		</form>
-		<input type='button' onclick='window.print()'>
-		</div>
-	</body>
 
+		<p class="doc__note">Tuition is &#8369;296 per unit. Lab and tutorial subjects add &#8369;1,500 each. This form becomes official once the registrar approves it.</p>
+
+		<div class="doc__signatures">
+			<div>Student signature over printed name</div>
+			<div>Registrar's signature and date</div>
+		</div>
+
+		<form method="POST" class="doc__submit">
+			<input type="hidden" name="contents" value="<?php echo $alltext; ?>">
+			<input type="hidden" name="units" value="<?php echo $totalunits; ?>">
+			<input type="submit" name="reg" value="Submit enrollment form" onclick="return confirm('Submit this enrollment form to the registrar?');"
+				data-confirm-title="Submit your enrollment form?" data-confirm="Your subjects go to the registrar for review." data-confirm-action="Submit form">
+		</form>
+		</div>
+	</article>
+</div>
+
+</body>
 </html>

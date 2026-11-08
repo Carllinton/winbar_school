@@ -1,5 +1,6 @@
 <?php
-	if(isset($_SESSION['logcheck']))
+	/* Admin pages: the visitor must be logged in AS AN ADMIN (before, any logged-in student passed this check) */
+	if(isset($_SESSION['logcheck']) && isset($_SESSION['type']) && $_SESSION['type']=='admin')
 	{
 		$authorize=1;
 	}
@@ -10,7 +11,8 @@
 	
 	if($authorize==0)
 	{
-		echo"<script>window.location='../index.php'</script>";
+		echo"<script>try{sessionStorage.setItem('winbarFlash','info|Log in to continue.')}catch(e){}window.winbarLeaving=1;window.location='../index.php'</script>";
+		exit; /* stop here: the rest of the protected page must not run */
 	}
 	
 ?>

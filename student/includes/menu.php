@@ -1,7 +1,16 @@
+<?php
+	/* Student main navigation. Highlights the section of the current page. */
+	$currentPage = basename($_SERVER['PHP_SELF']);
+	$studentNav = array(
+		'Home'       => array('studentindex.php', array('studentindex.php')),
+		'My profile' => array('studentprofile.php', array('studentprofile.php', 'changepass.php')),
+		'Enroll now' => array('enroll.php', array('enroll.php', 'showsubs.php')),
+	);
+?>
+<nav class="mainnav" aria-label="Main">
 	<ul>
-		<li class="nav-item"><a class="nav-link" href="studentindex.php">Home</a></li>
-		<li class="nav-item"><a class="nav-link" href="studentprofile.php">Profile</a></li>
-		<li class="nav-item"><a class="nav-link" href="enroll.php">Enroll Now</a></li>
-		<li class="nav-item"><a class="nav-link" href="">Curriculum</a></li>
-		<li class="nav-item"><a  class="nav-link"href="includes/logout.php">Log Out</a></li>
+		<?php foreach ($studentNav as $label => $item) { ?>
+			<li><a href="<?php echo $item[0]; ?>"<?php if (in_array($currentPage, $item[1])) echo ' class="is-active" aria-current="page"'; ?>><?php echo $label; ?></a></li>
+		<?php } ?>
 	</ul>
+</nav>

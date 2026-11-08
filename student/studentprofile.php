@@ -47,172 +47,90 @@
 	
 	
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>John Paul College</title>
-
-
-<link href="../style.css" rel="stylesheet" type="text/css"/>
-
+<title>My profile | Win B. A. R. Academy</title>
+<?php include('includes/head.php'); ?>
 </head>
+<body class="role-student">
 
-<body>
+<?php include('includes/topbar.php'); ?>
 
-<div class='header'>
-</div>
-	
-<nav class='container'>
-<?php
-include('includes/menu.php');
-?>
-</nav>
-
-
-
-
-
-<div id="main">
-	<div class="shell">
-	<center>
-	<form class='cmxform' method='POST'>
-	<fieldset>
-			<legend><h4>Account Details</h4></legend>
-			  <ol>
-			  <li>
-				  <label for="name"> &nbsp;&nbsp; UserName: </label>
-				  <?php echo"<b>$username</b>";?>&nbsp;&nbsp; <a href='changepass.php'>Change Password</a>
-				</li>
-				
-  </ol>
-			
-	</fieldset>
-	
-	<fieldset>
-			<legend><h4>College Details</h4></legend>
-			  <ol>
-			  <li>
-				  <label for="name">Student Number: </label>
-				  <?php echo "<b>$snum</b>";  ?>
-				  <label for="name">Course: </label>
-				  <?php echo "<b>BSIT</b>";  ?>
-				  <label for="name">Section/Year Level: </label>
-				  <?php echo "<b>$yrlvlsec</b>";  ?>
-				</li>
-				
-			</ol>
-			
-	</fieldset>
-	
-	<fieldset>	
-			  <legend><h4>Personal Details</h4></legend>
-			  <ol>
-			  <li>
-					<table align='center'>
-						<tr>
-							<td>First Name: </td><td><?php echo "<b>$fname</b>&nbsp&nbsp&nbsp&nbsp&nbsp";  ?></td><td>Civil Status: </td>
-							<td><?php echo "<b>$civilstatus</b>";  ?></td>
-																																				
-						</tr>
-						<tr>
-							<td>Middle Initial: </td><td align='left'><?php echo "<b>$minitial</b>";  ?></td>
-							<td>Guardian's Name: </td><td align='left'><?php echo "<b>$guardianname</b>";  ?></td>
-						</tr>
-						<tr>
-							<td>Last Name: </td><td><?php echo "<b>$lname</b>";  ?></td>
-							<td>Father's Name:</td><td align='left'><?php echo "<b>$fathername</b>";  ?></td>
-						</tr>
-						<tr>
-							<td><label>Gender: </label></td><td align='left'><?php echo "<b>$gender</b>";  ?></td>
-							<td>Mother's Name:</td><td align='left'><?php echo "<b>$mothername</b>";  ?></td>
-						</tr>
-						<tr>
-							<td>BirthDate: </td><td><?php echo "<b>$bdate</b>";  ?></td><td>Birth Place:</td><td align='left'><?php echo "<b>$bplace</b>";  ?></td>
-						</tr>
-					</table>
-					
-				</li>
-						
-				
-			  <li>
-				  <label for="address1">Address: </label>
-				  <textarea readonly="readonly" name='address' height='500' width='200'><?php echo $address; ?></textarea>
-			</li>
-			  <li>
-				  <label for="address2">Contact Number: </label>
-				  <?php echo "<b>$cnum</b>";  ?>
-				</li>
-			  <li>
-				  <label for="town-city">Email Address</label>
-				  <?php echo "<b>$email</b>";  ?>
-				</li>
-				  </ol>
-				  </fieldset>
-				<fieldset>
-		<legend><h4>Educational Background</h4></legend>
-			  <ol>
-			  <li>
-				  <table>
-			
-						<tr>
-							<td>Elementary School: </td><td align='left'><?php echo "<b>$elemschool</b>";  ?></td>
-							<td>Year Graduated:</td><td align='left'><?php echo "<b>$yrelem</b>";  ?></td>
-						</tr>
-						<tr>
-							<td>High School:</td><td><?php echo "<b>$hsschool</b>";  ?></td>
-							<td>Year Graduated:</td><td align='left'><?php echo "<b>$yrgradhs</b>";  ?></td>
-						</tr>
-						<tr>
-							<td>School Last Attended:</td><td><?php echo "<b>$lastschool</b>";  ?></td>
-							<td>Year Graduated:</td><td align='left'><?php echo "<b>$yrlast</b>";  ?></td>
-						</tr>
-						<tr>
-							<td colspan='4' align='center'><label for="address1">Address<em>*</em></label>
-				  <textarea name='address2' height='500' width='200' readonly="readonly"><?php echo  $gradaddresslast; ?></textarea></td>
-						</tr>
-					</table>
-			</li>
-				
-			</ol>
-			
-	</fieldset>
-			  
-			  
-
-
-<div align='center'><input type='submit' name='register' value='Add new user'>&nbsp;&nbsp;
-<input type='reset' name='clear' value='Clear'></div>
-</form>
-</center>
+<main class="page stack">
+	<div class="page-head">
+		<div>
+			<p class="crumbs"><a href="studentindex.php">Home</a> <span aria-hidden="true">/</span> My profile</p>
+			<h1><?php echo "$fname $lname"; ?></h1>
+			<p class="page-head__lead">Your student record. If something is wrong, or you forgot your password, ask the registrar's office.</p>
+		</div>
+		<div class="page-head__actions">
+			<a class="btn btn--primary" href="enroll.php">Enroll now</a>
+		</div>
+		<nav class="tabs" aria-label="My profile">
+			<a href="studentprofile.php" class="is-active" aria-current="page">My profile</a>
+			<a href="changepass.php">Password help</a>
+		</nav>
 	</div>
-	<div><br></div>
-</div>
-<!-- /Main -->
 
-<!-- Footer -->
-<div id="footer">
-	<div class="shell">
-		<!-- Mini Nav --> 
-		<div class="footer-navigation"> 
-		<?php
-			include('includes/menu2.php');
-		?>
-		</div> 
-		<!-- /Mini Nav --> 
-		
-		<!-- Copyrights --> 
-		<p class="right"> 
-			Copyright 2014 | Online Enrollment
-		</p> 
-		<!-- /Copyrights --> 
-		
-		<div class="cl">&nbsp;</div> 
+	<div class="tiles">
+		<div class="tile"><div class="tile__label">Student number</div><div class="tile__value"><?php echo $snum; ?></div></div>
+		<div class="tile"><div class="tile__label">Course</div><div class="tile__value caps"><?php echo $course; ?></div></div>
+		<div class="tile"><div class="tile__label">Year and section</div><div class="tile__value"><?php echo $yrlvlsec; ?></div></div>
+		<div class="tile"><div class="tile__label">Username</div><div class="tile__value"><?php echo $username; ?></div></div>
 	</div>
-</div>
 
+	<section class="window">
+		<div class="window__title">
+			<h2>Personal details</h2>
+		</div>
+		<div class="window__body">
+			<dl class="details">
+				<div class="details__row"><dt>First name</dt><dd><?php echo $fname; ?></dd></div>
+				<div class="details__row"><dt>Civil status</dt><dd class="caps-first"><?php echo $civilstatus; ?></dd></div>
+				<div class="details__row"><dt>Middle initial</dt><dd><?php echo $minitial; ?></dd></div>
+				<div class="details__row"><dt>Gender</dt><dd class="caps-first"><?php echo $gender; ?></dd></div>
+				<div class="details__row"><dt>Last name</dt><dd><?php echo $lname; ?></dd></div>
+				<div class="details__row"><dt>Birthdate</dt><dd><?php echo $bdate; ?></dd></div>
+				<div class="details__row"><dt>Contact number</dt><dd><?php echo $cnum; ?></dd></div>
+				<div class="details__row"><dt>Birthplace</dt><dd><?php echo $bplace; ?></dd></div>
+				<div class="details__row"><dt>Email address</dt><dd><?php echo $email; ?></dd></div>
+				<div class="details__row details__row--wide"><dt>Home address</dt><dd><?php echo $address; ?></dd></div>
+			</dl>
+		</div>
+	</section>
 
+	<div class="grid grid--2">
+		<section class="window">
+			<div class="window__title">
+				<h2>Parents and guardian</h2>
+			</div>
+			<div class="window__body">
+				<dl class="details details--1">
+					<div class="details__row"><dt>Father's name</dt><dd><?php echo $fathername; ?></dd></div>
+					<div class="details__row"><dt>Mother's name</dt><dd><?php echo $mothername; ?></dd></div>
+					<div class="details__row"><dt>Guardian's name</dt><dd><?php echo $guardianname; ?></dd></div>
+				</dl>
+			</div>
+		</section>
 
+		<section class="window">
+			<div class="window__title">
+				<h2>Educational background</h2>
+			</div>
+			<div class="window__body">
+				<dl class="details details--1">
+					<div class="details__row"><dt>Elementary</dt><dd><?php echo $elemschool; ?> <span class="muted"><?php echo $yrelem; ?></span></dd></div>
+					<div class="details__row"><dt>High school</dt><dd><?php echo $hsschool; ?> <span class="muted"><?php echo $yrgradhs; ?></span></dd></div>
+					<div class="details__row"><dt>Last attended</dt><dd><?php echo $lastschool; ?> <span class="muted"><?php echo $yrlast; ?></span></dd></div>
+					<div class="details__row"><dt>School address</dt><dd><?php echo $gradaddresslast; ?></dd></div>
+				</dl>
+			</div>
+		</section>
+	</div>
+</main>
+
+<?php include('includes/footer.php'); ?>
 
 </body>
 </html>

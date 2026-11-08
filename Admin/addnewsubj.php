@@ -36,138 +36,115 @@
 		
 		$insertquery=$conn->query("INSERT INTO subjecttbl VALUES ('','$scode','$stitle','$numunits','$sroom','$stime','$sday','$sinstructor',$islab,$istutorial,'$sdescription','$course')");
 		
-		echo"<script>window.alert('Successfully Created new Subject')</script>";
+		echo"<script>try{sessionStorage.setItem('winbarFlash','success|Subject added.')}catch(e){alert('Subject added.')}window.winbarLeaving=1;</script>";
 		echo"<script>window.location='addnewsubj.php'</script>";
 	}
 	
 	
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>John Paul College</title>
-
-
-<link href="../style.css" rel="stylesheet" type="text/css"/>
-
+<title>Add a subject | Win B. A. R. Academy</title>
+<?php include('includes/head.php'); ?>
 </head>
+<body class="role-admin">
 
-<body>
+<?php include('includes/topbar.php'); ?>
 
-<div class='header'>
-</div>
-	
-<nav class='container'>
-	<?php
-include('includes/menu1.php');
-?>
-</nav>
-
-
-
-
-
-<div id="main">
-	<div class="shell">
-	<center>
-	<form class='cmxform' method='POST'>
-	<fieldset>
-			<legend>Course Details</legend>
-			  <ol>
-			  <li>
-				  <label for="name">Select Course:<em>*</em></label>
-				  <select name='course'>
-					<option value='bsit'>BSIT</option>
-				  </select>
-				
-  </ol>
-			
-	</fieldset>
-	
-	<fieldset>	
-			  <legend>Subject Details</legend>
-			  <ol>
-			  <li>
-					<table>
-						<tr>
-							<td>Subject Code:</td><td align='left'><input type='text' required='required' maxlength='50' id="name" name='scode' /></td>
-						</tr>
-						<tr>
-							<td>Subject Title:</td><td align='left'><input type='text' required='required' id="name" name='stitle' /></td>
-						</tr>
-						<tr>
-							<td>Number of Units:</td><td align='left'><select name='numunits'>
-														<option value='1'>1</option>
-														<option value='2'>2</option>
-														<option value='3'>3</option>
-														<option value='4'>4</option>
-														<option value='5'>5</option>
-														<option value='6'>6</option></select></td>
-						</tr>
-						<tr>
-							<td><label>Subject Description:</label></td><td align='left'><textarea name='cdescription'></textarea></td>
-						</tr>
-						<tr>
-							<td><label>Room:</label></td><td align='left'><input type='text' required='required' id="name" name='sroom' /></td>
-						</tr>
-						<tr>
-							<td><label>Day:</label></td><td align='left'><input type='text' required='required' id="name" name='sday' /></td>
-						</tr>
-						<tr>
-							<td><label>Time:</label></td><td align='left'><input type='text' required='required' id="name" name='stime' /></td>
-						</tr>
-						<tr>
-							<td><label>Instructor:</label></td><td align='left'><input type='text' required='required' id="name" name='sinstructor' /></td>
-						</tr>
-						<tr>
-							<td><label>With Lab:</label></td><td align='left'><input type='checkbox' name='islab'></td>
-						</tr>
-						<tr>
-							<td><label>With Tutorial:</label></td><td align='left'><input type='checkbox' name='istutorial'></td>
-						</tr>
-					</table>
-					
-				</li>
-						
-				
-			 
-			  
-			  
-  </ol>
-</fieldset>
-<div align='center'><input type='submit' name='register' value='Add new subject'>&nbsp;&nbsp;
-<input type='reset' name='clear' value='Clear'></div>
-</form>
-</center>
+<main class="page">
+	<div class="page-head">
+		<div>
+			<p class="crumbs"><a href="adminindex.php">Home</a> <span aria-hidden="true">/</span> Manage subjects</p>
+			<h1>Add a subject</h1>
+			<p class="page-head__lead">New subjects appear on the student enrollment page right away. Fields marked <span class="req">*</span> are required.</p>
+		</div>
+		<nav class="tabs" aria-label="Manage subjects">
+			<a href="subjectreg.php">All subjects</a>
+			<a href="addnewsubj.php" class="is-active" aria-current="page">Add a subject</a>
+		</nav>
 	</div>
-	<div><br></div>
-</div>
-<!-- /Main -->
 
-<!-- Footer -->
-<div id="footer">
-	<div class="shell">
-		<!-- Mini Nav --> 
-		<div class="footer-navigation"> 
-			<?php
-include('includes/menu2.php');
-?>
-		</div> 
-		<!-- /Mini Nav --> 
-		
-		<!-- Copyrights --> 
-		<p class="right"> 
-			Copyright 2014 | Online Enrollment
-		</p> 
-		<!-- /Copyrights --> 
-		
-		<div class="cl">&nbsp;</div> 
-	</div>
-</div>
+	<form class="window" method="POST">
+		<div class="window__title">
+			<h2>Subject information</h2>
+		</div>
+		<div class="window__body">
 
+			<fieldset class="form-section">
+				<legend class="form-section__title">Subject details</legend>
+				<div class="fields fields--3">
+					<div class="field">
+						<label for="course">Course <em>*</em></label>
+						<select id="course" name="course">
+							<option value="bsit">BSIT</option>
+						</select>
+					</div>
+					<div class="field">
+						<label for="scode">Subject code <em>*</em></label>
+						<input type="text" required="required" maxlength="50" id="scode" name="scode" placeholder="IT 301" />
+					</div>
+					<div class="field">
+						<label for="numunits">Units <em>*</em></label>
+						<select id="numunits" name="numunits">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select>
+					</div>
+					<div class="field field--wide">
+						<label for="stitle">Subject title <em>*</em></label>
+						<input type="text" required="required" id="stitle" name="stitle" placeholder="Web Systems and Technologies" />
+					</div>
+					<div class="field field--wide">
+						<label for="cdescription">Description</label>
+						<textarea id="cdescription" name="cdescription"></textarea>
+					</div>
+				</div>
+			</fieldset>
 
+			<fieldset class="form-section">
+				<legend class="form-section__title">Schedule</legend>
+				<div class="fields">
+					<div class="field">
+						<label for="sday">Day <em>*</em></label>
+						<input type="text" required="required" id="sday" name="sday" placeholder="Mon / Wed" />
+					</div>
+					<div class="field">
+						<label for="stime">Time <em>*</em></label>
+						<input type="text" required="required" id="stime" name="stime" placeholder="9:00 to 10:30 AM" />
+					</div>
+					<div class="field">
+						<label for="sroom">Room <em>*</em></label>
+						<input type="text" required="required" id="sroom" name="sroom" placeholder="Lab 2" />
+					</div>
+					<div class="field">
+						<label for="sinstructor">Instructor <em>*</em></label>
+						<input type="text" required="required" id="sinstructor" name="sinstructor" />
+					</div>
+				</div>
+			</fieldset>
 
+			<fieldset class="form-section">
+				<legend class="form-section__title">Extra fees</legend>
+				<div class="choice-row">
+					<label class="choice"><input type="checkbox" name="islab" /> Has a lab fee</label>
+					<label class="choice"><input type="checkbox" name="istutorial" /> Has a tutorial fee</label>
+				</div>
+			</fieldset>
+
+		</div>
+		<div class="window__footer">
+			<input type="reset" name="clear" value="Clear form" />
+			<input type="submit" name="register" value="Add subject" />
+		</div>
+	</form>
+</main>
+
+<?php include('includes/footer.php'); ?>
 
 </body>
 </html>

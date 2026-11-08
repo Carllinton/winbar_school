@@ -36,117 +36,75 @@
 		
 		$insertquery=$conn->query("INSERT INTO subjecttbl VALUES ('','$scode','$stitle','$numunits','$sroom','$stime','$sday','$sinstructor',$islab,$istutorial,'$sdescription','$course')");
 		
-		echo"<script>window.alert('Successfully Created new Subject')</script>";
+		echo"<script>try{sessionStorage.setItem('winbarFlash','success|Subject added.')}catch(e){alert('Subject added.')}window.winbarLeaving=1;</script>";
 		echo"<script>window.location='addnewsubj.php'</script>";
 	}
 	
 	
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>John Paul College</title>
-
-
-<link href="../style.css" rel="stylesheet" type="text/css"/>
-
+<title>Add a section | Win B. A. R. Academy</title>
+<?php include('includes/head.php'); ?>
 </head>
+<body class="role-admin">
 
-<body>
+<?php include('includes/topbar.php'); ?>
 
-<div class='header'>
-</div>
-	
-<nav class='container'>
-	<?php
-include('includes/menu1.php');
-?>
-</nav>
-
-
-
-
-
-<div id="main">
-	<div class="shell">
-	<center>
-	<form class='cmxform' method='POST'>
-	<fieldset>
-			<legend>Course Details</legend>
-			  <ol>
-			  <li>
-				  <label for="name">Select Course:<em>*</em></label>
-				  <select name='course'>
-					<option value='bsit'>BSIT</option>
-				  </select>
-				
-  </ol>
-			
-	</fieldset>
-	
-	<fieldset>	
-			  <legend>Section Details:</legend>
-			  <ol>
-			  <li>
-					<table>
-						<tr>
-							<td>Section Name:</td><td align='left'><input type='text' required='required' maxlength='50' id="name" name='scode' /></td>
-						</tr>
-						<tr>
-							<td>Section Year Level:</td><td align='left'><select name='numunits'>
-																			<option value='1'>1</option>
-																			<option value='2'>2</option>
-																			<option value='3'>3</option>
-																			<option value='4'>4</option>
-																		</select></td>
-						</tr>
-						<tr>
-							<td>Max Number of Students:</td><td align='left'><input type='number' required='required'  name='scode' /></td>
-						</tr>
-						
-					</table>
-					
-				</li>
-						
-				
-			 
-			  
-			  
-  </ol>
-</fieldset>
-<div align='center'><input type='submit' name='register' value='Add new Section'>&nbsp;&nbsp;
-<input type='reset' name='clear' value='Clear'></div>
-</form>
-</center>
+<main class="page stack">
+	<div class="page-head">
+		<div>
+			<p class="crumbs"><a href="adminindex.php">Home</a> <span aria-hidden="true">/</span> Manage subjects</p>
+			<h1>Add a section</h1>
+			<p class="page-head__lead">Set up a class section and its size limit.</p>
+		</div>
 	</div>
-	<div><br></div>
-</div>
-<!-- /Main -->
 
-<!-- Footer -->
-<div id="footer">
-	<div class="shell">
-		<!-- Mini Nav --> 
-		<div class="footer-navigation"> 
-			<?php
-include('includes/menu2.php');
-?>
-		</div> 
-		<!-- /Mini Nav --> 
-		
-		<!-- Copyrights --> 
-		<p class="right"> 
-			Copyright 2014 | Online Enrollment
-		</p> 
-		<!-- /Copyrights --> 
-		
-		<div class="cl">&nbsp;</div> 
+	<div class="notice notice--warn window--narrow">
+		<span class="notice__icon" aria-hidden="true">!</span>
+		<div><strong>This page isn't finished yet.</strong> Saving it currently runs the add-subject code, so don't use it for real data until the backend is updated.</div>
 	</div>
-</div>
 
+	<form class="window window--narrow" method="POST">
+		<div class="window__title">
+			<h2>Section details</h2>
+		</div>
+		<div class="window__body">
+			<div class="fields fields--1">
+				<div class="field">
+					<label for="course">Course <em>*</em></label>
+					<select id="course" name="course">
+						<option value="bsit">BSIT</option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="section-name">Section name <em>*</em></label>
+					<input type="text" required="required" maxlength="50" id="section-name" name="scode" placeholder="III-2" />
+				</div>
+				<div class="field">
+					<label for="section-year">Year level <em>*</em></label>
+					<select id="section-year" name="numunits">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="section-max">Maximum number of students <em>*</em></label>
+					<input type="number" required="required" id="section-max" name="scode" />
+				</div>
+			</div>
+		</div>
+		<div class="window__footer">
+			<input type="reset" name="clear" value="Clear form" />
+			<input type="submit" name="register" value="Add section" />
+		</div>
+	</form>
+</main>
 
-
+<?php include('includes/footer.php'); ?>
 
 </body>
 </html>

@@ -2,131 +2,89 @@
 session_start();
 include('logcheck.php');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>John Paul College</title>
-
-<link href="../style.css" rel="stylesheet" type="text/css"/>
+<title>Student home | Win B. A. R. Academy</title>
+<?php include('includes/head.php'); ?>
 </head>
+<body class="role-student">
 
-<body>
+<?php include('includes/topbar.php'); ?>
 
-<div class='header'>
-</div>
-	
-<nav class='container'>
-<?php
-include('includes/menu.php');
-?>
-</nav>
-
-
-
-
-
-<div id="main">
-	<div class="shell">
-		<!-- Box -->
-		<div class="box">
-			<h2>Welcome Student</h2>
-			
-			<div class="entry">
-				 <p><b>John Paul College</b></font></p>
-		<br><b>Mission:</b></font>
-        <p> A center of learning and academic excellence in the Province of Oriental Mindoro</p>
-        <br><b>Vision:</b></font>
-        <p>John Paul College is committed to achieve lasting improvements in education and in the lives of the people by producing students who have the ability to think critically, create, lead, compete and excel towards full development of the family, community and global environment</p>
-			</div>
-			
-		</div>
-		<!-- /Box -->
-		<!-- Box -->
-		<div class="box">
-			<h2>Latest Events</h2>
-			
-			<div class="entry">
-				<!-- News -->	
-				<div class="news">
-					<ul>
-						<li>
-							<div class="post-image">
-								<a href="#"><img src="news1.jpg" width='90' height='70' alt="" /></a>
-							</div>
-							<div class="post-data">
-								<h5><a href="#">September 11th, 2010</a></h5>
-								<p>Nam scelerisque mi ut leo eleifend imperdiet. Donec at molestie diam. Etiam quam nisi, elementum sed commodo, posuere <a href="#">&hellip;</a></p>
-							</div>
-							<div class="cl">&nbsp;</div>
-						</li>
-						
-						<li class="last">
-							<div class="post-image">
-								<a href="#"><img src="news2.jpg" width='90' height='70'  alt="" /></a>
-							</div>
-							<div class="post-data">
-								<h5><a href="#">September 10th, 2010</a></h5>
-								<p>Nam scelerisque mi ut leo eleifend imperdiet. Donec at molestie diam. Etiam quam nisi, elementum sed commodo, posuere <a href="#">&hellip;</a></p>
-							</div>
-							<div class="cl">&nbsp;</div>
-						</li>
-					</ul>
+<main class="home">
+	<section class="hero">
+		<img class="hero__photo" src="../assets/img/banner-campus.jpg" alt="" />
+		<div class="wrap hero__inner">
+			<div class="hero__card">
+				<p class="eyebrow">Now open</p>
+				<h1>Second-semester enrollment</h1>
+				<p>Check that your profile is correct, then pick this semester's subjects and print your enrollment form for the registrar.</p>
+				<div class="hero__actions">
+					<a class="btn btn--danger" href="enroll.php">Enroll now</a>
+					<a class="btn" href="studentprofile.php">View my profile</a>
 				</div>
-				<!-- /News -->
-			</div>
-			
-			<div class="buttons">
-				<a href="#" class="button"><span>Read More</span></a>
 			</div>
 		</div>
-		<!-- /Box -->
-		<!-- Box -->
-		<div class="box last-box">
-			<h2>Programs</h2>
-			
-			<div class="entry bullet-list">
-				<ul>
-					  <li><a href="#">CHED COURSES</a></li>
-	                    <li><a href="#">TESDA COURSES</a></li>
+	</section>
+
+	<section class="wrap home-section">
+		<h2 class="section-title">Quick start</h2>
+		<div class="quick-grid">
+			<a class="quick quick--crimson" href="enroll.php"><strong>Enroll now</strong><span>Choose this semester's subjects</span></a>
+			<a class="quick quick--cobalt" href="studentprofile.php"><strong>My profile</strong><span>Check your student record</span></a>
+			<a class="quick quick--emerald" href="changepass.php"><strong>Password help</strong><span>Forgot it? The registrar resets it</span></a>
+			<div class="quick quick--gold"><strong>Registrar's office</strong><span>[Office hours and room]</span></div>
+		</div>
+	</section>
+
+	<section class="wrap home-section">
+		<h2 class="section-title">Latest news</h2>
+		<div class="news-grid">
+			<article class="news-card">
+				<img src="../assets/img/news-1.jpg" alt="Students lined up at the registrar's window" />
+				<time datetime="2026-11-03">November 3, 2026</time>
+				<h3>Second-semester enrollment is open</h3>
+				<p>Pick your subjects under Enroll now and print the form before visiting the registrar.</p>
+			</article>
+			<article class="news-card">
+				<img src="../assets/img/news-2.jpg" alt="Foundation week booths on the school grounds" />
+				<time datetime="2026-10-24">October 24, 2026</time>
+				<h3>Foundation week recap</h3>
+				<p>Booths, a retro game night, and our first pixel-art contest. Photos are on the student lounge board.</p>
+			</article>
+			<article class="news-card">
+				<img src="../assets/img/news-3.jpg" alt="[Describe the photo]" />
+				<time datetime="2026-10-10">October 10, 2026</time>
+				<h3>[Third news headline]</h3>
+				<p>[One or two sentences about the news item.]</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="about-band">
+		<div class="wrap about-band__inner">
+			<div>
+				<h2>Our mission</h2>
+				<p>To give every student the skills, habits, and confidence to keep learning long after they leave our halls.</p>
+			</div>
+			<div>
+				<h2>Our vision</h2>
+				<p>A campus where no lesson gets lost: every idea saved, organized, and ready to unpack in the real world.</p>
+			</div>
+			<div>
+				<h2>Our programs</h2>
+				<ul class="program-list">
+					<li><span class="book book--crimson"></span>BS Information Technology</li>
+					<li><span class="book book--cobalt"></span>BS Computer Science</li>
+					<li><span class="book book--emerald"></span>TESDA short courses</li>
 				</ul>
-				<div class="post-image">
-								<a href="#"><img src="news3.jpg" width='100' height='100' alt="" /></a>
-								<a href="#"><img src="news4.jpg" width='100' height='100' alt="" /></a>
-							</div>
 			</div>
-		
 		</div>
-		<!-- /Box -->
-		<div class="cl">&nbsp;</div>
-	</div>
-  <div><br></div>
-</div>
-<!-- /Main -->
+	</section>
+</main>
 
-<!-- Footer -->
-<div id="footer">
-	<div class="shell">
-		<!-- Mini Nav --> 
-		<div class="footer-navigation"> 
-			<?php
-include('includes/menu2.php');
-?>
-		</div> 
-		<!-- /Mini Nav --> 
-		
-		<!-- Copyrights --> 
-		<p class="right"> 
-			Copyright 2014 | Online Enrollment
-		</p> 
-		<!-- /Copyrights --> 
-		
-		<div class="cl">&nbsp;</div> 
-	</div>
-</div>
-
-
-
+<?php include('includes/footer.php'); ?>
 
 </body>
 </html>

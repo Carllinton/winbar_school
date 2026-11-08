@@ -1,0 +1,129 @@
+/* Win B. A. R. Academy: CHARCOAL AND COBALT theme tokens, light and dark.
+
+   Light is the default. Dark applies when:
+     - the visitor picked it with the switch (html[data-theme="dark"], remembered per browser), or
+     - they made no choice and their device is set to dark mode.
+   Printable documents (.doc-page) always use the light values.
+   All text pairs meet WCAG AA in both modes. */
+
+/* LIGHT ------------------------------------------------------------------- */
+:root,
+.doc-page {
+  color-scheme: light;
+
+  /* Bold book colors: --x is the fill, --x-strong is for text and links */
+  --primary: #1F4FD1;          /* cobalt */
+  --primary-strong: #1F4FD1;
+  --primary-tint: #E6ECFB;
+  --on-primary: #FFFFFF;
+
+  --danger: #C0283F;           /* crimson */
+  --danger-strong: #A81F35;
+  --danger-tint: #FBE7EA;
+  --on-danger: #FFFFFF;
+
+  --success: #12805A;          /* emerald */
+  --success-strong: #0E6A4A;
+  --success-tint: #E2F2EB;
+  --on-success: #FFFFFF;
+
+  --highlight: #EAA800;        /* gold */
+  --highlight-tint: #FFF3CC;
+  --on-highlight: #262B36;
+
+  /* Roles (charcoal plays three of them in light mode) */
+  --text: #262B36;             /* body text */
+  --chrome: #262B36;           /* dark bars: utility bar, table headers, footer, login panel */
+  --outline: #262B36;          /* panel and button outlines */
+  --shadow-color: #262B36;     /* hard retro shadows */
+  --text-muted: #6A6F7A;       /* stone */
+  --text-soft: #B9BEC9;        /* secondary text on --chrome */
+
+  --surface: #FFFFFF;
+  --surface-alt: #F5F6F7;
+  --field: #FFFFFF;            /* inputs */
+  --border: #D9DCE2;
+  --silver: #E6E8EC;
+  --bevel-light: #FFFFFF;
+
+  --bg: #F5F6F7;
+  --grid-line: rgba(31, 79, 209, .06);
+
+  --shadow: 6px 6px 0 var(--shadow-color);
+  --shadow-sm: 3px 3px 0 var(--shadow-color);
+  --bevel-hi: rgba(255, 255, 255, .35);
+  --bevel-lo: rgba(0, 0, 0, .28);
+
+  /* Kept for older rules: same as --text */
+  --ink: var(--text);
+}
+
+/* DARK -------------------------------------------------------------------- */
+/* Written twice on purpose: once for the switch, once for the device setting */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: #3A62DE;
+  --primary-strong: #8FA9F7;
+  --primary-tint: #1E2A4D;
+  --danger: #C83550;
+  --danger-strong: #F28B9C;
+  --danger-tint: #3A1E26;
+  --success: #16875F;
+  --success-strong: #5FD3A5;
+  --success-tint: #173328;
+  --highlight: #F2BB2B;
+  --highlight-tint: #3A3016;
+  --on-highlight: #1B1F27;
+
+  --text: #E7E9EE;
+  --chrome: #0D0F14;
+  --outline: #6B7385;
+  --shadow-color: #05070A;
+  --text-muted: #A3A9B6;
+  --text-soft: #B9BEC9;
+
+  --surface: #1C2029;
+  --surface-alt: #232833;
+  --field: #12151B;
+  --border: #343A47;
+  --silver: #2A303B;
+  --bevel-light: rgba(255, 255, 255, .08);
+
+  --bg: #14171D;
+  --grid-line: rgba(143, 169, 247, .05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --primary: #3A62DE;
+    --primary-strong: #8FA9F7;
+    --primary-tint: #1E2A4D;
+    --danger: #C83550;
+    --danger-strong: #F28B9C;
+    --danger-tint: #3A1E26;
+    --success: #16875F;
+    --success-strong: #5FD3A5;
+    --success-tint: #173328;
+    --highlight: #F2BB2B;
+    --highlight-tint: #3A3016;
+    --on-highlight: #1B1F27;
+
+    --text: #E7E9EE;
+    --chrome: #0D0F14;
+    --outline: #6B7385;
+    --shadow-color: #05070A;
+    --text-muted: #A3A9B6;
+    --text-soft: #B9BEC9;
+
+    --surface: #1C2029;
+    --surface-alt: #232833;
+    --field: #12151B;
+    --border: #343A47;
+    --silver: #2A303B;
+    --bevel-light: rgba(255, 255, 255, .08);
+
+    --bg: #14171D;
+    --grid-line: rgba(143, 169, 247, .05);
+  }
+}

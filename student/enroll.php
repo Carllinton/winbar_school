@@ -30,117 +30,85 @@
 	
 	
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>John Paul College</title>
-
-
-<link href="../style.css" rel="stylesheet" type="text/css"/>
-
+<title>Enroll now | Win B. A. R. Academy</title>
+<?php include('includes/head.php'); ?>
 </head>
+<body class="role-student">
 
-<body>
+<?php include('includes/topbar.php'); ?>
 
-<div class='header'>
-</div>
-	<div align='left'>
-<nav class='container'>
-<?php
-include('includes/menu.php');
-?>
-</nav>
-</div>
+<main class="page">
+	<div class="page-head">
+		<div>
+			<p class="crumbs"><a href="studentindex.php">Home</a> <span aria-hidden="true">/</span> Enroll now</p>
+			<h1>Enroll now</h1>
+			<p class="page-head__lead">Choose the semester, tick the subjects you're taking, then review your form and fees on the next page.</p>
+		</div>
+	</div>
 
+	<form class="stack" method="POST" action="showsubs.php"
+		data-require-one="subject[]" data-require-message="Pick at least one subject to enroll in." data-unit-counter
+		onsubmit="if (!this.querySelector('input[type=checkbox]:checked')) { alert('Pick at least one subject to enroll in.'); return false; }">
 
+		<div class="tiles">
+			<div class="tile"><div class="tile__label">Student</div><div class="tile__value"><?php echo $fullname; ?></div></div>
+			<div class="tile"><div class="tile__label">Course</div><div class="tile__value caps"><?php echo $course; ?></div></div>
+			<div class="tile"><div class="tile__label">Year and section</div><div class="tile__value"><?php echo $yrlvlsec; ?></div></div>
+			<div class="tile">
+				<label class="tile__label" for="sem">Semester</label>
+				<select id="sem" name="sem">
+					<option value="1st Sem">1st semester</option>
+					<option value="2nd Sem">2nd semester</option>
+				</select>
+			</div>
+		</div>
 
-
-<div id="main">
-	<div class="shell">
-	<center>
-	<form class='cmxform' method='POST' action='showsubs.php'>
-	
-	
-	<fieldset>
-			<legend>Student Details</legend>
-			  <ol>
-			  <li>
-				  <label for="name"><b>Year Level:</b>  <?php echo $yrlvlsec; ?> ||</label>
-				  <label for="name"><b>Course:</b>  <?php echo $course; ?></label>
-				  <label for="name"><b>Sem:</b></label><select name='sem'><option value='1st Sem'>1st</option><option value='2nd Sem'>2nd</option></select>
-				  
-				</li>
-				
-  </ol>
-			<div><br></div>
-	</fieldset>
-	<fieldset>	
-			  <legend>List of Subjects</legend>
-			  <ol>
-			  <li>
-					<table border='1'>
-						<thead>
-							<th>Subject Code</th>
-							<th>Subject Title</th>
+		<section class="window">
+			<div class="window__title">
+				<h2>Available subjects</h2>
+			</div>
+			<p class="scroll-hint no-print">Swipe the table sideways to see every column.</p>
+			<div class="window__body--flush table-scroll">
+				<table class="data-table">
+					<thead>
+						<tr>
+							<th class="pick">Take</th>
+							<th>Code</th>
+							<th>Subject title</th>
 							<th>Description</th>
-							<th>Number of Units</th>
-							<th>Select</th>
-						</thead>
-						<tbody>
-							<?php
-								$getsubjects=$conn->query("SELECT * FROM subjecttbl");
-								while($fetchsub=mysqli_fetch_array($getsubjects))
-								{
-									echo"<tr>";
-										echo"<td width='120' align='center'>$fetchsub[subjectcode]</td>";
-										echo"<td width='120' align='center'>$fetchsub[subjecttitle]</td>";
-										echo"<td width='120' align='center'>$fetchsub[description]</td>";
-										echo"<td width='120' align='center'>$fetchsub[numofunits]</td>";
-										echo"<td  width='120' align='center'><input type='checkbox' name='subject[]' value='$fetchsub[subjectcode]'></td>";
-									echo"</tr>";
-								}
-								
-							
-							?>
-						</tbody>
-					</table>
-					<div>  <br></div>
-	 </fieldset>
-				
+							<th class="num">Units</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							$getsubjects=$conn->query("SELECT * FROM subjecttbl");
+							while($fetchsub=mysqli_fetch_array($getsubjects))
+							{
+								echo"<tr>";
+									echo"<td class='pick'><input type='checkbox' name='subject[]' value='$fetchsub[subjectcode]' id='sub-$fetchsub[ID]'></td>";
+									echo"<td class='mono'><label for='sub-$fetchsub[ID]'>$fetchsub[subjectcode]</label></td>";
+									echo"<td><label for='sub-$fetchsub[ID]'>$fetchsub[subjecttitle]</label></td>";
+									echo"<td class='muted'>$fetchsub[description]</td>";
+									echo"<td class='num'>$fetchsub[numofunits]</td>";
+								echo"</tr>";
+							}
+						?>
+					</tbody>
+				</table>
+			</div>
+			<div class="window__footer">
+				<p class="unit-counter" data-unit-output aria-live="polite">No subjects selected yet</p>
+				<input type="reset" name="clear" value="Clear selection" />
+				<input type="submit" name="register" value="Review enrollment form" />
+			</div>
+		</section>
+	</form>
+</main>
 
-<div align='center'><input type='submit' name='register' value='Enroll Selected'>&nbsp;&nbsp;
-<input type='reset' name='clear' value='Clear'></div>
-</form>
-</center>
-	</div>
-	<div><br></div>
-</div>
-<!-- /Main -->
-
-<!-- Footer -->
-<div id="footer">
-	<div class="shell">
-		<!-- Mini Nav --> 
-		<div class="footer-navigation"> 
-		<?php
-			include('includes/menu2.php');
-		?>
-		</div> 
-		<!-- /Mini Nav --> 
-		
-		<!-- Copyrights --> 
-		<p class="right"> 
-			Copyright 2014 | Online Enrollment
-		</p> 
-		<!-- /Copyrights --> 
-		
-		<div class="cl">&nbsp;</div> 
-	</div>
-</div>
-
-
-
+<?php include('includes/footer.php'); ?>
 
 </body>
 </html>

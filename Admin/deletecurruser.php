@@ -9,7 +9,7 @@ if(isset($_GET['accid']))
 	$query2=$conn->query("DELETE FROM usertbl WHERE ID = $accountID");
 	$query=$conn->query("DELETE FROM studenttbl WHERE ID = $num");
 	
-	echo"<script>window.alert('Successfully Removed the selected account')</script>";
+	echo"<script>try{sessionStorage.setItem('winbarFlash','success|Student account deleted.')}catch(e){alert('Student account deleted.')}window.winbarLeaving=1;</script>";
 	echo"<script>window.location='userreg.php'</script>";
 }
 else

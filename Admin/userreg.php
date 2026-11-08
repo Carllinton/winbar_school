@@ -5,75 +5,74 @@
 	
 	
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>John Paul College</title>
-
-<link href="../style.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript">
-$('.confirm').live('click', function(){
-    return confirm("Are you sure?");
-});
-</script>
+<title>Manage students | Win B. A. R. Academy</title>
+<?php include('includes/head.php'); ?>
 
 	<script src="js/jquery-1.7.min.js"></script>
-
 	<script src="js/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
 
-        <script type="text/javascript" charset="utf-8">
-            $(document).ready(function(){
-                $('#datatables').dataTable({
-                    "sPaginationType":"full_numbers",
-                    "aaSorting":[[2, "desc"]],
-                    "bJQueryUI":true
-                });
-            })
-        </script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$('#datatables').dataTable({
+				"sPaginationType":"full_numbers",
+				"aaSorting":[[2, "desc"]],
+				"bJQueryUI":true
+			});
+		})
+	</script>
 </head>
+<body class="role-admin">
 
+<?php include('includes/topbar.php'); ?>
 
-<body>
+<main class="page">
+	<div class="page-head">
+		<div>
+			<p class="crumbs"><a href="adminindex.php">Home</a> <span aria-hidden="true">/</span> Manage students</p>
+			<h1>Students</h1>
+			<p class="page-head__lead">Every registered student account. Search, sort by any column, or delete an account.</p>
+		</div>
+		<div class="page-head__actions">
+			<a class="btn btn--primary" href="addnewuser.php">Add a student</a>
+		</div>
+		<nav class="tabs" aria-label="Manage students">
+			<a href="userreg.php" class="is-active" aria-current="page">All students</a>
+			<a href="addnewuser.php">Add a student</a>
+			<a href="adminedit.php">Admin account</a>
+		</nav>
+	</div>
 
-<div class='header'>
-</div>
-	
-<nav class='container'>
-<?php
-include('includes/menu1.php');
-?>
-</nav>
-
-
-
-
-
-<div id="main">
-	<div class="shell">
-	<div class="users-heading"><center><b><h1>Registered User List</h1></b></center></div>
-	<div class="users-actions"><a href='adminedit.php'><img src='adminedit.png' title='edit admin details' width='50' ></a><a href='addnewuser.php'><img title='Add new user' src='iconadd.png' width='50' ></a></div>
-		<form method="post" class="niceform" >
-
-		
+	<section class="window">
+		<div class="window__title">
+			<h2>Registered students</h2>
+		</div>
+		<div class="window__body--flush">
+		<form method="post" class="niceform">
+		<p class="scroll-hint no-print">Swipe the table sideways to see every column.</p>
+		<div class="table-scroll">
 		 <table id="datatables" class="display">
-             <thead>
-				<th>Student ID</th>
-             	<th>Student Name</th>
-             	<th>Year Level</th>
-             	<th>Course</th>
-				<th>Action</th>
-              </thead>    
-              <tbody>
+			<thead>
+				<tr>
+					<th>Student ID</th>
+					<th>Student name</th>
+					<th>Course</th>
+					<th>Year and section</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
 			  <?php
 			  include('../conn.php');
 				$getusers=$conn->query("SELECT * FROM studenttbl");
 				if(mysqli_num_rows($getusers)==0)
 				{
-				echo"<tr>
-						<td colspan ='5' align='center'>
-							No Entries
+				echo"<tr class='empty-row'>
+						<td colspan ='5'>
+							No students yet. Use Add a student to create the first account.
 						</td>
 					</tr>";
 				}
@@ -82,48 +81,26 @@ include('includes/menu1.php');
 				while($getrows=mysqli_fetch_array($getusers))
 					{
 					echo"<tr>
-							<td>$getrows[studnum]</td>
+							<td class='mono'>$getrows[studnum]</td>
 							<td>$getrows[fname] $getrows[minitial] $getrows[lname]</td>
-							<td>$getrows[course]</td>
-							<td>$getrows[yearlvl]</td>;"?>
-							<td><a href="deletecurruser.php?<?php echo"accid=$getrows[ID]";?>" onclick="return confirm('Are you sure?');">DELETE</a></td>
+							<td><span class='badge badge--primary caps'>$getrows[course]</span></td>
+							<td>$getrows[yearlvl]</td>"?>
+							<td class="row-actions"><a class="link-action" href="resetpass.php?<?php echo"accid=$getrows[ID]";?>">Reset password</a> <a class="link-danger" href="deletecurruser.php?<?php echo"accid=$getrows[ID]";?>" onclick="return confirm('Delete this student account? This cannot be undone.');"
+								data-confirm-title="Delete <?php echo htmlspecialchars("$getrows[fname] $getrows[lname]", ENT_QUOTES); ?>'s account?" data-confirm="This removes the student's login and record. It can't be undone." data-confirm-action="Delete account" data-confirm-tone="danger">Delete</a></td>
 						</tr>
 						<?php
 					}
 				}
 					?>
-				</tbody>
+			</tbody>
 		</table>
-    
-</form>
-	</div>
-	<div><br></div>
-</div>
-<!-- /Main -->
+		</div>
+		</form>
+		</div>
+	</section>
+</main>
 
-<!-- Footer -->
-<div id="footer">
-	<div class="shell">
-		<!-- Mini Nav --> 
-		<div class="footer-navigation"> 
-			<?php
-		include('includes/menu2.php');
-			?>
-		</div> 
-		<!-- /Mini Nav --> 
-		
-		<!-- Copyrights --> 
-		<p class="right"> 
-			Copyright 2014 | Online Enrollment
-		</p> 
-		<!-- /Copyrights --> 
-		
-		<div class="cl">&nbsp;</div> 
-	</div>
-</div>
-
-
-
+<?php include('includes/footer.php'); ?>
 
 </body>
 </html>

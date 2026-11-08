@@ -2,64 +2,82 @@
 session_start();
 include('../includes/conn.php');
 ?>
-<html>
-	<head>
-	<SCRIPT LANGUAGE="JavaScript"> 
-if (window.print) {
-document.write('<form><input type=button name=print value="Print" onClick="window.print()"></form>');
-}
-</script>
-	</head>
-	
-	<body>
-		
-		<div align='center'><img width='200' height='150' src='logo.jpg'></div><div align='center' class="report-school">DE OCAMPO MEMORIAL MEDICAL CENTER<br>2921 Nagtahan St. Sta. Mesa Manila</div></div><br>
-		<div align='center'>Student Listing:</div><br>
-		<div align='center' width='600px' class="report-table-wrap">
-		<table border="2" align='center' width='1000'>
-		<tr>
-				<td width="100" align="center"><b>Student Num</b></td>
-             	<td width="200" align="center"><b>Student Name</b></td>
-				<td width="100" align="center"><b>Shift</b></td>
-             	<td width="300" align="center"><b>Rest Days</b></td>
-				
-			
-          </tr>
-              <tbody>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Student report | Win B. A. R. Academy</title>
+<link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg" />
+<link href="../../style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="doc-page role-admin">
+
+<div class="doc">
+	<div class="doc__toolbar no-print">
+		<a class="btn btn--ghost" href="../userreg.php">Back to students</a>
+		<button type="button" class="btn btn--primary" onclick="window.print()">Print report</button>
+	</div>
+
+	<article class="window doc__sheet">
+		<header class="doc__head">
+			<img src="../../assets/img/logo.svg" alt="Win B. A. R. Academy crest" />
+			<div>
+				<div class="doc__school">Win B. A. R. Academy</div>
+				<div class="doc__address">88 Archive Road, Metro Manila, Philippines</div>
+			</div>
+			<div class="doc__title">
+				<strong>Student listing</strong>
+				<span>Printed <?php echo date('F j, Y'); ?></span>
+			</div>
+		</header>
+
+		<div class="doc__body">
+		<p class="scroll-hint no-print">Swipe the table sideways to see every column.</p>
+		<div class="table-scroll">
+		<table class="data-table">
+			<thead>
+				<tr>
+					<th>Student no.</th>
+					<th>Student name</th>
+					<th>Course</th>
+					<th>Enrolled subjects</th>
+				</tr>
+			</thead>
+			<tbody>
 			  <?php
-			
+
 				$queryrequest=$conn->query("SELECT * FROM studenttbl");
 				while($rowshift=mysqli_fetch_array($queryrequest))
 				{
 				echo	"<tr>";
-				echo	"<td>$rowshift[studnum]</td>";
+				echo	"<td class='mono'>$rowshift[studnum]</td>";
 				echo	"<td>$rowshift[fname] $rowshift[minitial]. $rowshift[lname]</td>";
-				echo	"<td>$rowshift[course]</td>";
-				
-				$querygetoffs=$conn->query("SELECT * FROM sched_tbl WHERE studnum='$rowshift[studnum]' AND status='1' LIMIT 1");
-				$getoff=mysqli_fetch_array($querygetoffs);
-				if(mysqli_num_rows($querygetoffs)==0)
+				echo	"<td class='caps'>$rowshift[course]</td>";
+
+				/* Fix A (approved by the team): the old schedule lookup queried sched_tbl for columns it doesn't have
+				   and crashed. This read-only lookup shows the student's latest submitted enrollment instead. */
+				$queryenrolled=$conn->query("SELECT * FROM student_subject WHERE studentID='$rowshift[studnum]' ORDER BY ID DESC LIMIT 1");
+				if(mysqli_num_rows($queryenrolled)==0)
 				{
-					echo	"<td>No Assigned Schedules Yet</td>";
+					echo	"<td class='muted'>Not enrolled yet</td>";
 					echo	"</tr>";
 				}
 				else
 				{
-					echo	"<td>$getoff[dayoff1], $getoff[dayoff2], $getoff[dayoff3]<br>
-								 $getoff[dayoff4], $getoff[dayoff5], $getoff[dayoff6]<br>
-								 $getoff[dayoff7]</td>";
+					$enrolled=mysqli_fetch_array($queryenrolled);
+					$subjectlist=str_replace(',', ', ', trim($enrolled['subjects'], ','));
+					echo	"<td>$subjectlist <span class='muted'>($enrolled[totalunits] units)</span></td>";
 					echo	"</tr>";
 				}
 				}
 			  ?>
 			</tbody>
-			</table>
+		</table>
 		</div>
-		<div align='center' class="report-print">
-		<form>
-			<input type='button' onclick='window.print()'>
-		</form>
 		</div>
-	</body>
+	</article>
+</div>
 
+</body>
 </html>

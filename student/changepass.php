@@ -1,123 +1,50 @@
 <?php
+	/* School rule: students can't change their own passwords. The registrar resets them
+	   (admin: Manage students > Reset password). This page explains that; it no longer has a form. */
 	session_start();
-	
-	$getID=$_SESSION['userID'];
-	include('includes/conn.php');
 	include('logcheck.php');
-	$getprofile=$conn->query("SELECT * FROM studenttbl WHERE accountID = '$getID'");
-	$rows=mysqli_fetch_array($getprofile);
-	
-	$getacc=$conn->query("SELECT * FROM usertbl WHERE ID= '$getID'");
-	$rowaccs=mysqli_fetch_array($getacc);
-	
-	
-	if(isset($_POST['cpass']))
-	{
-		$oldpass=$_POST['opassword'];
-		$checkpass=$conn->query("SELECT * FROM usertbl WHERE ID= '$getID' AND password='$oldpass'");
-		if(mysqli_num_rows($checkpass)==0)
-		{
-			echo"<script>window.alert('Inputted password is wrong please try again')</script>";
-		}
-		else
-		{
-			if($_POST['password']==$_POST['password2'])
-			{
-				$newpass=$_POST['password'];
-				$updatepass=$conn->query("UPDATE usertbl SET password='$newpass' WHERE ID='$getID'");
-				echo"<script>window.alert('Successfully updated the password')</script>";
-				echo"<script>window.location='studentprofile.php')</script>";
-			}
-		}
-	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>John Paul College</title>
-
-
-<link href="../style.css" rel="stylesheet" type="text/css"/>
-
+<title>Password help | Win B. A. R. Academy</title>
+<?php include('includes/head.php'); ?>
 </head>
+<body class="role-student">
 
-<body>
+<?php include('includes/topbar.php'); ?>
 
-<div class='header'>
-</div>
-	
-<nav class='container'>
-<?php
-include('includes/menu.php');
-?>
-</nav>
-
-
-
-
-
-<div id="main">
-	<div class="shell">
-	<center>
-	<form class='cmxform' method='POST'>
-	<fieldset>
-			<legend><h4>Account Details</h4></legend>
-			  <ol>
-			  <li>
-			  <table>
-			  <tr>
-				<td align='right'><label for="name" > Input Old Password: </label></td>
-				<td><input type='password' name='opassword'></td>
-			  </tr>
-			  <tr>
-				<td align='right'><label for="name" > Input New Password: </label></td>
-				<td><input type='password' name='password'></td>
-			  </tr>
-			  <tr>
-				<td align='right'><label for="name"> Input Password Again: </label></td>
-				<td><input type='password' name='password2'></td>
-			  </tr>
-					</table>
-				</li>
-				
-  </ol>
-			
-	</fieldset>
-	<br>
-	
-<div align='center'><input type='submit' name='cpass' value='Change Password'>&nbsp;&nbsp;
-<input type='reset' name='clear' value='Clear'></div>
-</form>
-</center>
+<main class="page">
+	<div class="page-head">
+		<div>
+			<p class="crumbs"><a href="studentindex.php">Home</a> <span aria-hidden="true">/</span> My profile</p>
+			<h1>Password help</h1>
+			<p class="page-head__lead">Passwords are managed by the registrar's office.</p>
+		</div>
 	</div>
-	<div><br></div>
-</div>
-<!-- /Main -->
 
-<!-- Footer -->
-<div id="footer">
-	<div class="shell">
-		<!-- Mini Nav --> 
-		<div class="footer-navigation"> 
-		<?php
-			include('includes/menu2.php');
-		?>
-		</div> 
-		<!-- /Mini Nav --> 
-		
-		<!-- Copyrights --> 
-		<p class="right"> 
-			Copyright 2014 | Online Enrollment
-		</p> 
-		<!-- /Copyrights --> 
-		
-		<div class="cl">&nbsp;</div> 
-	</div>
-</div>
+	<section class="window window--narrow">
+		<div class="window__title">
+			<h2>Forgot your password?</h2>
+		</div>
+		<div class="window__body prose">
+			<p>Students can't change their own passwords. If you forgot yours, or think someone else knows it, the registrar's office will set a new one for you.</p>
+			<h3>What to do</h3>
+			<ol class="steps">
+				<li>Go to the registrar's office and bring your school ID.</li>
+				<li>Ask them to reset your portal password.</li>
+				<li>Log in with the new password they give you, and keep it to yourself.</li>
+			</ol>
+			<h3>Registrar's office</h3>
+			<p>[Office hours and room]</p>
+		</div>
+		<div class="window__footer">
+			<a class="btn" href="studentprofile.php">Back to my profile</a>
+		</div>
+	</section>
+</main>
 
-
-
+<?php include('includes/footer.php'); ?>
 
 </body>
 </html>

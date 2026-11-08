@@ -1,8 +1,17 @@
-
-    <ul>
-      <li class="nav-item"><a href="adminindex.php" class="nav-link">Home</a></li>
-      <li class="nav-item"><a href="userreg.php" class="nav-link">Manage Users</a></li>
-      <li class="nav-item"><a href="subjectreg.php" class="nav-link">Manage Subjects</a></li>
-      <li class="nav-item"><a href="includes/report.php" class="nav-link">Generate Report</a></li>
-	   <li class="nav-item"><a href="includes/logout.php" class="nav-link">Log Out</a></li>
-    </ul>
+<?php
+	/* Admin main navigation. Highlights the section of the current page. */
+	$currentPage = basename($_SERVER['PHP_SELF']);
+	$adminNav = array(
+		'Home'            => array('adminindex.php', array('adminindex.php')),
+		'Manage students' => array('userreg.php', array('userreg.php', 'addnewuser.php', 'adminedit.php', 'resetpass.php')),
+		'Manage subjects' => array('subjectreg.php', array('subjectreg.php', 'addnewsubj.php', 'addnewsection.php', 'addnewsched.php')),
+		'Student report'  => array('includes/report.php', array('report.php')),
+	);
+?>
+<nav class="mainnav" aria-label="Main">
+	<ul>
+		<?php foreach ($adminNav as $label => $item) { ?>
+			<li><a href="<?php echo $item[0]; ?>"<?php if (in_array($currentPage, $item[1])) echo ' class="is-active" aria-current="page"'; ?>><?php echo $label; ?></a></li>
+		<?php } ?>
+	</ul>
+</nav>
